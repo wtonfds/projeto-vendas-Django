@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Sistema de Vendas</title>
+
+    <link rel="stylesheet" href="{% static "css/simple-sidebar.css" %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{% url 'home' %}">
+                        SISCONV
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'unidade_list' %}"> Unidades </a>
+                </li>
+                <li>
+                    <a href="{% url 'cargo_list' %}"> Cargos</a>
+                </li>
+                <li>
+                    <a href="{% url 'produto_list' %}"> Produtos</a>
+                </li>
+                <li>
+                    <a href="{% url 'cliente_list' %}"> Clientes</a>
+                </li>
+                <li>
+                    <a href="{% url 'funcionario_list' %}"> Funcionários</a>
+                </li>
+                <li>
+                    <a href="{% url 'venda_list' %}"> Vendas</a>
+                </li>
+                <li>
+                    <a href="{% url 'admin:index' %}"> Cadastros</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <center><img src="{% static "img/SISCONV.png" %}"></center>
+                        {% block conteudo %}
+                            <center><h3>Bem vindo ao Sistema de Controle de Vendas</h3></center>
+                            <hr>
+                            <p><h4>
+                            Aumente suas vendas e garanta mais eficiência e segurança ao seu negócio com o SISCONV, um sistema que oferece soluções de gestão inovadoras e integradas que permitem aos varejistas elevarem a competitividade e aumentarem as vendas com melhores margens e níveis de estoque.
+                            </h4></p>
+                            <p><h4>Para mais informações entre em contato com nosso RH.</h4></p>
+                            <center><a href="{% url 'contato' %}" class="btn btn-warning">Entrar em contato</a></center>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <script
+              src="https://code.jquery.com/jquery-3.1.0.js"
+              integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+              crossorigin="anonymous"></script>
+        
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+
+</body>
+</html>
+
+
+

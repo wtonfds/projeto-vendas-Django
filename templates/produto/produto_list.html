@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <center><h2>Produtos</h2></center>
+    <hr>
+    <p><a href="{% url 'produto_new' %}" class="btn btn-primary" >Criar Novo Produto</a></p>
+    <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'produto_list' %}">
+      <div class="form-group">
+          <label for="criterio">Descrição:</label>
+        <input type="text" id="criterio" name="criterio" value="{{ criterio }}" class="form-control" placeholder="Descrição">
+      </div>
+      <button type="submit" class="btn btn-default">Buscar</button>
+    </form>
+    <table class="table table-hover">
+  <tr>
+    <th>Descrição</th>
+    <th>Unidade</th>
+      <th>Valor Unitário</th>
+      <th colspan="2">Operações</th>
+  </tr>
+    {% for produto in produtos %}
+        <tr>
+            <td><a href="{% url 'produto_detail' produto.pk %}">{{ produto.descricao | upper }}</a></td>
+            <td>{{ produto.unidade.sigla }}</td>
+            <td>{{ produto.valorUnitario | floatformat:2 }}</td>
+            <td><a href="{% url 'produto_update' produto.pk %}" class="btn btn-primary">Atualizar</a> </td>
+            <td><a href="{% url 'produto_delete' produto.pk %}" class="btn btn-danger">Deletar</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% include 'utils/paginacao.html' %}
+{% endblock %}

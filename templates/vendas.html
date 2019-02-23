@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <center><h2>Vendas</h2></center>
+    <hr>
+    <p><a href="#" class="btn btn-primary" >Realizar nova venda</a></p>
+    
+      <table class="table table-bordered table-hover table-condensed">
+        <tr>
+          <th>Venda</th>
+          <th>Cliente</th>
+          <th>Funcionário</th>
+          <th>Data da venda</th>
+          <th>Itens da venda</th>
+        </tr>  
+        {% for venda in vendas  %}
+          <tr>
+            <td>{{venda.id}}</td>
+            <td>{{venda.cliente.nome}}</td>
+            <td>{{ venda.vendedor.nome }}</td>
+            <td>{{ venda.dataVenda|date:'d/m/Y'  }}</td>
+            <td>
+              {% for item in venda.vendaproduto_set.all %}
+                  <p>{{ item.quantidade }} x {{ item.produto.descricao }}</p>
+                  <p>Preço da unidade :{{ item.produto.valorUnitario }} R$</p>
+                  <p>Subtotal: {{item.subtotal}} R$</p>
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+  
+{% endblock %}
